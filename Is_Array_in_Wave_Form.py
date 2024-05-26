@@ -1,21 +1,17 @@
-n = int(input())
+# Print "yes" if the array is in Wave Form - e.g. first > second < third > fourth < fifth >
+# Print "no" if the array is not in Wave Form
 
-for _ in range(n):
-
-    numbers_input = input()
-
-    num_list = [int(x) for x in numbers_input.split(" ")]
-
-    counter = 0
+usr_inp = input().split()
+numbers = [int(i) for i in usr_inp]
 
 
-    for i in range(len(num_list)):
-        
-        if num_list[i] == num_list[len(num_list)-1-i]:
-            counter += 1
-    if counter == len(num_list):
-            print("Yes")
-    else:
-            print("No")
+res = 'yes'
+for i in range(1, len(numbers)-1):
+    if (numbers[i] >= numbers[i-1]) and (numbers[i] <= numbers[i+1]):
+        res = 'no'
+    
+    elif (numbers[i] <= numbers[i-1]) and (numbers[i] >= numbers[i+1]):
+        res = 'no'
+    
 
-    #print(', '.join(map(str, num_list)))
+print(res)
